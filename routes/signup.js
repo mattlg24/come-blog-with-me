@@ -18,14 +18,16 @@ router.post('/', (req, res, next) => {
         }, '*')
         .then((user) => {
             const id = user[0].id
-            console.log('the user is id ', id);
-            // res.send('something happened')
+                // console.log('the user is id ', id);
+                // res.send('something happened')
             knex('users')
                 .where('id', id)
-                .then(() => {
+                .then((info) => {
+                    req.session.userInfo = info
+                        // console.log('cookie info', req.session.userInfo);
                     res.redirect('profile')
                 })
         })
 })
 
-module.exports = router;;;
+module.exports = router;
