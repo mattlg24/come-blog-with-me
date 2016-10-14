@@ -1,0 +1,9 @@
+<div class="container">
+    {{#each users}}
+        <div>
+            <h4><a href="/users/{{this.id}}">{{first_name}} {{last_name}}</a></h4>
+            <img class="circle" src="{{image}}" alt="{{first_name}} + {{last_name}}" />
+            <!-- <p>{{this.bio}}</p> -->
+        </div>
+    {{/each}}
+</div>
