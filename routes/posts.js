@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
         .join('users', 'users.id', 'posts.user_id')
         // .orderBy('created_at', 'asc')
         .then((posts) => {
-            console.log('posts are', posts);
+            // console.log('posts are', posts);
             res.render('posts', {
                 posts: posts,
                 first_name: posts.first_name,

@@ -1,6 +1,13 @@
-<h1>this is the profile page</h1>
 
 <div class="container">
     <img class="circle" src="{{image}}" alt="{{first_name}} + {{last_name}}" />
     <h2>{{first_name}} {{last_name}}</h2>
+
+<a href="./writepost" class="waves-effect waves-light btn">Write a post</a>
+
+{{#each profile}}
+<h5>{{title}}</h5>
+<h6>{{body}}</h6>
+{{/each}}
+
 </div>
