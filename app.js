@@ -19,6 +19,7 @@ const posts = require('./routes/posts');
 const writepost = require('./routes/writepost');
 const logout = require('./routes/logout');
 const login = require('./routes/login');
+// const one = require('./routes/one');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/posts', posts);
 app.use('/writepost', writepost);
 app.use('/logout', logout);
 app.use('/login', login);
+// app.use('/id', one);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

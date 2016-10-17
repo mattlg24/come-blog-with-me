@@ -9,8 +9,8 @@ router.get('/', ((req, res, next) => {
 }))
 
 router.post('/', (req, res, next) => {
-    console.log('body is', req.body.email);
-    console.log('password is', req.body.password);
+    // console.log('body is', req.body.email);
+    // console.log('password is', req.body.password);
     knex('users')
         .where('email', req.body.email)
         .first()
