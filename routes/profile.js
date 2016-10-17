@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex')
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
     // console.log('cookie stuff', req.session.userInfo);
     knex('users')
@@ -21,11 +20,10 @@ router.get('/', function(req, res, next) {
                 // body: profile[0].body
             })
         })
-
 });
 
 router.get('/:id', (req, res) => {
-    console.log('req.params is', req.params);
+    // console.log('req.params is', req.params);
     // res.status(200).send('you made it to the /posts/:id route. the id is ' + req.params.id)
     knex('posts')
         // .join('posts', 'posts.user_id', 'users.id')
@@ -35,28 +33,32 @@ router.get('/:id', (req, res) => {
             res.render('one', {
                 onePost: onePost,
                 title: onePost[0].title,
-                body: onePost[0].body
+                body: onePost[0].body,
             })
         })
-        // console.log('req.params', req.params);
-        // console.log('req.query', req.query);
-        // console.log('post stuff req.params', req.params);
-        //     })
+})
+
+router.put('/:id', (req, res, next) => {
+    knex('posts')
+        .where('id', req.body.theId)
+    then((post) => {
+        console.log('post info is', post);
+        // return knex('posts')
+        // .update({
+        //     title: ,
+        //     body: ,
+        // })
+        // .where('posts.id', req.body.theID)
+    })
 })
 
 router.delete('/:id', (req, res, next) => {
-    console.log('req.body is', req.body);
+    return knex('posts')
+        .del()
+        .where('id', req.body.theID)
+        .then(() => {
+            res.redirect('profile')
+        })
 })
 
-module.exports = router;
-
-
-
-
-// getOnePost(id){
-//     return knex('posts')
-//     .join('users', 'posts.user_id', 'users.id')
-//     .select('posts.id as postId', 'users.id as userId', 'users.image_url as userImage', 'users.first_name as firstName', 'users.last_name as lastName', 'posts.title as title', 'posts.body as postBody', 'posts.image_url as postImage')
-//     .where('posts.id', id.toString()).first()
-//   }
-//   }
+module.exports = router;;
