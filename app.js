@@ -23,6 +23,9 @@ const login = require('./routes/login');
 
 const app = express();
 
+const userRouter = express.Router()
+    // const itemRouter = express.Router({mergeParams: true})
+
 app.use(cookieSession({
     name: 'come_blog_with_me',
     secret: process.env.SESSION_SECRET,

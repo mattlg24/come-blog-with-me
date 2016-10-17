@@ -25,23 +25,27 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', (req, res) => {
-    // console.log('req.params', req.params);
-    // console.log('req.query', req.query);
-    // console.log('post stuff req.params', req.params);
-    // knex('posts')
-    //     // .join('users', 'users.id', 'posts.user_id')
-    //     .where('id', id)
-    //     .first()
-    //     .then((post) => {
-    //         console.log('post is', post);
-    //         res.render('posts/edit')
-    //     })
+    console.log('req.params is', req.params);
+    // res.status(200).send('you made it to the /posts/:id route. the id is ' + req.params.id)
+    knex('posts')
+        // .join('posts', 'posts.user_id', 'users.id')
+        .where('id', req.params.id)
+        .then((onePost) => {
+            console.log('onePost is', onePost);
+            res.render('one', {
+                onePost: onePost,
+                title: onePost[0].title,
+                body: onePost[0].body
+            })
+        })
+        // console.log('req.params', req.params);
+        // console.log('req.query', req.query);
+        // console.log('post stuff req.params', req.params);
+        //     })
 })
 
-router.delete('/', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
     console.log('req.body is', req.body);
-    // knex('posts')
-    //     .where('id', )
 })
 
 module.exports = router;
@@ -54,4 +58,5 @@ module.exports = router;
 //     .join('users', 'posts.user_id', 'users.id')
 //     .select('posts.id as postId', 'users.id as userId', 'users.image_url as userImage', 'users.first_name as firstName', 'users.last_name as lastName', 'posts.title as title', 'posts.body as postBody', 'posts.image_url as postImage')
 //     .where('posts.id', id.toString()).first()
+//   }
 //   }
