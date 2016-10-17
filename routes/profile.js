@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
         // .join('posts', 'posts.user_id', 'users.id')
         .where('id', req.params.id)
         .then((onePost) => {
-            console.log('onePost is', onePost);
+            // console.log('onePost is', onePost);
             res.render('one', {
                 onePost: onePost,
                 title: onePost[0].title,
@@ -39,17 +39,16 @@ router.get('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res, next) => {
+    // console.log('req.body.title', req.body.title);
     knex('posts')
-        .where('id', req.body.theId)
-    then((post) => {
-        console.log('post info is', post);
-        // return knex('posts')
-        // .update({
-        //     title: ,
-        //     body: ,
-        // })
-        // .where('posts.id', req.body.theID)
-    })
+        .where('id', req.body.theID)
+        .update({
+            title: req.body.title,
+            body: req.body.body
+        })
+        .then(() => {
+            res.redirect('profile')
+        })
 })
 
 router.delete('/:id', (req, res, next) => {
@@ -61,4 +60,4 @@ router.delete('/:id', (req, res, next) => {
         })
 })
 
-module.exports = router;;
+module.exports = router;

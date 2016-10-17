@@ -5,8 +5,9 @@
 
 
 <div class="container">
+  <h5>Make your changes and then click Edit Post, or just click Delete Post to delete it.</h5>
     <div class="row">
-        <form action="" method="post" class="col s12">
+        <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="title" type="text" class="validate" name="title" value="{{title}}">
@@ -21,7 +22,7 @@
             </div>
             <div class="container center-align">
                 <button class="btn waves-effect waves-light editPost" type="submit" name="action" value="submit">Edit Post</button>
-                <button class="btn waves-effect waves-light deletePost" type="submit" name="action" value="delete">Delete Post</button>
+                <button class="btn waves-effect waves-light deletePost" name="action" value="delete">Delete Post</button>
             </div>
         </form>
     </div>
