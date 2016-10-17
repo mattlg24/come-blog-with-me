@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt')
 
 
 router.get('/', ((req, res, next) => {
+    console.log('random log');
     res.render('login');
 }))
 
