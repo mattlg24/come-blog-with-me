@@ -87,10 +87,10 @@ app.use(function(err, req, res, next) {
     });
 });
 
-const port = process.env.PORT || 8000
-
-app.listen(port, () => {
-    console.log('listening on port ', port);
-})
+// const port = process.env.PORT || 8000
+//
+// app.listen(port, () => {
+//     console.log('listening on port ', port);
+// })
 
 module.exports = app;
